@@ -1,69 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Full Featured Video Player</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Featured Video Player</title>
 
-<style>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw; /* Ensures the body spans the full viewport width */
+      overflow: hidden; /* Prevents accidental scrolling */
+    }
 
-body{
-margin:0;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
+    .player {
+      width: 95%; /* Slightly wider for a better mobile experience */
+      max-width: 1000px;
+      aspect-ratio: 16/9;
+    }
 
-.player{
-width:90%;
-max-width:1000px;
-aspect-ratio:16/9;
-}
-
-.player iframe{
-width:100%;
-height:100%;
-border:none;
-border-radius:12px;
-}
-
-</style>
+    .player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+  </style>
 
 </head>
 <body>
 
-<div class="player">
+  <div class="player">
+    <iframe
+      id="player"
+      loading="lazy"
+      title="Video player"
+      src="https://play.gumlet.io/embed/699f8f9eba6c1c14db24409c?controls=true"
+      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-<iframe
-loading="lazy"
-title="Video player"
-src="https://play.gumlet.io/embed/699f8f9eba6c1c14db24409c?controls=true"
-allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
-allowfullscreen>
-</iframe>
+  <script>
+    let iframe = document.getElementById("player");
 
-</div>
+    function playVideo() {
+      iframe.src = "https://play.gumlet.io/embed/699f8f9eba6c1c14db24409c?autoplay=true&controls=false";
+    }
 
-</body>
-</html>
-let iframe = document.getElementById("player");
-
-function playVideo(){
-
-iframe.src =
-"https://play.gumlet.io/embed/699f8f9eba6c1c14db24409c?autoplay=true&controls=false";
-
-}
-
-function stopVideo(){
-
-iframe.src =
-"https://play.gumlet.io/embed/699f8f9eba6c1c14db24409c?autoplay=false&controls=false";
-
-}
-
-</script>
+    function stopVideo() {
+      iframe.src = "https://play.gumlet.io/embed/699f8f9eba6c1c14db24409c?autoplay=false&controls=false";
+    }
+  </script>
 
 </body>
 </html>
